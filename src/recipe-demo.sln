@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27330.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{099E6DB9-9243-46F7-A4CB-FB74E1C44392}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Recipe.Service", "Recipe.Service\Recipe.Service.csproj", "{F4BF85D5-C662-4749-A95F-1BA9B724586E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F4BF85D5-C662-4749-A95F-1BA9B724586E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4BF85D5-C662-4749-A95F-1BA9B724586E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4BF85D5-C662-4749-A95F-1BA9B724586E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4BF85D5-C662-4749-A95F-1BA9B724586E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {53C2126F-1F4E-466A-98C6-FB96302A4D49}
+	EndGlobalSection
+EndGlobal
