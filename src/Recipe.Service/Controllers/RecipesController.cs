@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Web;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace Recipe.Service.Controllers
 {
+    [EnableCors("*", "*", "*")]
     public class RecipesController : ApiController
     {
         [HttpGet]
@@ -37,7 +39,7 @@ namespace Recipe.Service.Controllers
         [HttpGet]
         public List<Models.Recipe> GetAll(int start = 0, int limit = 10, string sortBy = "lastUpdateDate", string orderBy = "desc")
         {
-            return RecipeManager.Singleton.Search(start, limit, sortBy, orderBy);
+            return RecipeManager.Singleton.GetRecipes(start, limit, sortBy, orderBy);
         }
     }
 }

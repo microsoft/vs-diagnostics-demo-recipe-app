@@ -46,7 +46,7 @@ namespace Recipe.Service.Models
             return Recipes[id];
         }
 
-        public List<Recipe> Search(int start, int limit, string sortBy, string orderBy)
+        public List<Recipe> GetRecipes(int start, int limit, string sortBy, string orderBy)
         {
             // Note: This is obvioussly insane and done for the sake of a demo
             Recipe[] recipesArray = Recipes.Values.ToArray();
