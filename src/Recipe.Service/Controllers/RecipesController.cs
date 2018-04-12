@@ -18,13 +18,13 @@ namespace Recipe.Service.Controllers
                 throw new HttpException(404, "Invalid id");
             }
 
+            //List<Models.Recipe> recipes = Models.RecipeManager.Singleton.GetRecipeByName(name);
             Models.Recipe recipe = Models.RecipeManager.Singleton.GetRecipeById(idAsLong);
 
-            if(recipe == null)
+            if (recipe == null)
             {
-                throw new HttpException(404, $"Recipe not found for id {id}");
+                throw new HttpException(404, $"Recipes not found for name {id}");
             }
-
             return recipe;
         }
 

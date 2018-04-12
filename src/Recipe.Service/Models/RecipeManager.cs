@@ -46,6 +46,21 @@ namespace Recipe.Service.Models
             return Recipes[id];
         }
 
+        public List<Recipe> GetRecipeByName(string name) {
+            Recipe[] recipesArray = Recipes.Values.ToArray();
+            List<Recipe> results = null;
+            for (int i = 0; i < recipesArray.Length; i++) {
+                if (recipesArray[i].Title.Equals(name)) {
+                    results.Add(recipesArray[i]);
+                }
+            }
+
+            IEnumerable < Recipe > returnRecipes = recipesArray.ToList();
+            returnRecipes = returnRecipes.Take(10);
+
+            return (List<Recipe>)returnRecipes.ToList();
+        }
+
         public List<Recipe> GetRecipes(int start, int limit, string sortBy, string orderBy)
         {
             // Note: This is obvioussly insane and done for the sake of a demo
