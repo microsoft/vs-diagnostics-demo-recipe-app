@@ -48,26 +48,11 @@ namespace Recipe.Service.Models
 
         public List<Recipe> GetRecipes(int start, int limit, string sortBy, string orderBy)
         {
-            // Note: This is obvioussly insane and done for the sake of a demo
-            Recipe[] recipesArray = Recipes.Values.ToArray();
+            IEnumerable<Recipe> recipes =  (from recipe in Recipes.Values
+                                            orderby recipe.SpoonacularScore descending
+                                            select recipe).Skip(start).Take(limit);
 
-            for (int i = 0; i < recipesArray.Length; i++)
-            {
-                for (int j = 0; j < recipesArray.Length - i - 1; j++)
-                {
-                    if (recipesArray[j].SpoonacularScore > recipesArray[j + 1].SpoonacularScore)
-                    {
-                        Recipe tempRecipe = recipesArray[j];
-                        recipesArray[j] = recipesArray[j + 1];
-                        recipesArray[j + 1] = tempRecipe;
-                    }
-                }
-            }
-
-            IEnumerable<Recipe> returnRecipe = recipesArray.ToList();
-            returnRecipe = returnRecipe.Skip(start).Take(limit);
-
-            return (List<Recipe>)returnRecipe.ToList();
+            return recipes.ToList();
         }
 
         private Recipe LoadRecipeFromJson(string json)
