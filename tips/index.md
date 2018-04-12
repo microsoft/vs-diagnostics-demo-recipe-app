@@ -2,5 +2,6 @@
 
 ## Debugger
 
-1. [Pinned Datatips](PinnedDatatip.md)
-2. [No Side Effect Expression Evaluation](NoSideEffects.md)
+1. [Multiple Startup Projects](MultipleStartupProjects.md)
+2. [Pinned Datatips](PinnedDatatip.md)
+3. [No Side Effect Expression Evaluation](NoSideEffects.md)

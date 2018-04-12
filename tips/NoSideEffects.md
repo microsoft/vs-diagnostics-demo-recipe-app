@@ -12,7 +12,7 @@ In this example we'll be executing some code in a watch expression taht will cha
 
 2. Launch `Recipe.Web` and navigate to the root page. This should cause the controller above to run and the breakpoint to hit.
 
-3. Back in VS go to the watch window enter the expression `limit`
+3. Back in VS go to the watch window enter the expression `limit`.
 
 ![Watch 'limit' added with a value of 10](NoSideEffect-AddFirstWatch.png)
 
@@ -20,9 +20,9 @@ In this example we'll be executing some code in a watch expression taht will cha
 
 ![Watch 'limit++' added with a value of 11](NoSideEffect-AddWatchWithSideEffect.png)
 
-5. Clear the `limit++` watch
+5. Clear the `limit++` watch.
 
-6. Add a new watch with the expression `limit++, nse`
+6. Add a new watch with the expression `limit++, nse`.
 
 ![Watch 'limit++, nse' added with a value of 11](NoSideEffect-AddWatchWithNoSideEffect.png)
 
@@ -50,9 +50,9 @@ public Recipe NextRecipe
 ```
 **Warning: The above is an insane property - getters should be idempotent.**
 
-1. Set a breakpoint in `RecipeManager.cs` line `86` 
-2. Navigate to the home page which should cause the breakpoint to hit
-3. In the watch window add the expression `RecipeManager.Singleton.NextRecipe, nse`
-4. Inpspect the item 
+1. Set a breakpoint in `RecipeManager.cs` line `86`.
+2. Navigate to the home page which should cause the breakpoint to hit.
+3. In the watch window add the expression `RecipeManager.Singleton.NextRecipe, nse`.
+4. Inpspect the item. 
 
 This illustrates how `, nse` works. You can think of `,nse` as executing the code involved but without writting back to your application. So in this case when you look an item with `,nse` you get the next item every time you inspect the object but your application isn't changed. 
