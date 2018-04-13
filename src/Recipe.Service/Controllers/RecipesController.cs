@@ -18,15 +18,31 @@ namespace Recipe.Service.Controllers
                 throw new HttpException(404, "Invalid id");
             }
 
-            //List<Models.Recipe> recipes = Models.RecipeManager.Singleton.GetRecipeByName(name);
             Models.Recipe recipe = Models.RecipeManager.Singleton.GetRecipeById(idAsLong);
 
             if (recipe == null)
             {
-                throw new HttpException(404, $"Recipes not found for name {id}");
+                throw new HttpException(404, $"Recipe not found for id {id}");
             }
+
             return recipe;
         }
+
+        [Route("api/recipes/{name}")]
+        [HttpGet]
+        public List<Models.Recipe> GetByName(string name)
+        {
+            //List<Models.Recipe> recipes = Models.RecipeManager.Singleton.GetRecipeByName(name);
+            List<Models.Recipe> recipes = RecipeManager.Singleton.GetRecipesByName(name);
+
+            if (recipes == null)
+            {
+                throw new HttpException(404, $"Recipes not found for name {name}");
+            }
+            return recipes;
+        }
+
+ 
 
         /// <summary>
         /// Lists an index of all recipes

@@ -1,4 +1,4 @@
-﻿@model Recipe.Service.Models.Recipe
+﻿@model IEnumerable<Recipe.Service.Models.Recipe>
 
 	@{
 		ViewData["Title"] = "SearchResults";
@@ -12,21 +12,21 @@
 			</form>
 		</div>
 
-		@*@foreach (var item in Model) {*@ 
+		@foreach (var item in Model) { 
 			<div class='col-md-4'>
 				<div class='card mb-4 box-shadow'>
-					<img class='card-img-top' src="@Html.DisplayFor(model => model.Image)" alt="Image of @Html.DisplayFor(model => model.Title)">
+					<img class='card-img-top' src="@Html.DisplayFor(modelItem => item.Image)" alt="Image of @Html.DisplayFor(modelItem => item.Title)">
 					<div class='card-body'>
-						<p class='card-text'> @Html.DisplayFor(model => model.Title)</p>
+						<p class='card-text'> @Html.DisplayFor(modelItem => item.Title)</p>
 						<div class='d-flex justify-content-between align-items-center'>
-							<small class='text-muted'>from @Html.DisplayFor(model => model.SourceName)</small>
-							<small class='text-muted'><strong> + @Html.DisplayFor(model => model.ReadyInMinutes) mins</strong></small>
+							<small class='text-muted'>from @Html.DisplayFor(modelItem => item.SourceName)</small>
+							<small class='text-muted'><strong> + @Html.DisplayFor(modelItem => item.ReadyInMinutes) mins</strong></small>
 						</div>
 						<div class='d-flex justify-content-between align-items-center'>
-							<small class='text-muted'>Rating: @Html.DisplayFor(model => model.SpoonacularScore)%</small>
+							<small class='text-muted'>Rating: @Html.DisplayFor(modelItem => item.SpoonacularScore)%</small>
 						</div>
 					</div>
 				</div>
 			</div>
-		@*}*@
+		}
 	</div>

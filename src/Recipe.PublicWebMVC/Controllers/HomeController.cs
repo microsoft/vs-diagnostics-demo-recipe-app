@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using PublicWebMVC.Models;
 using Recipe.Service.Models;
 
@@ -20,7 +21,7 @@ namespace PublicWebMVC.Controllers
 
         public async Task<IActionResult> SearchResults(string searchString)
         {
-            Recipe.Service.Models.Recipe recipe = null;
+            IList<Recipe.Service.Models.Recipe> recipes = null;
 
             if (!String.IsNullOrEmpty(searchString)) {
                 HttpClient client = new HttpClient();
@@ -29,14 +30,15 @@ namespace PublicWebMVC.Controllers
 
                 if (response.IsSuccessStatusCode)
                 {
-                    recipe = await response.Content.ReadAsAsync<Recipe.Service.Models.Recipe>();
+                    recipes = await response.Content.ReadAsAsync<IList<Recipe.Service.Models.Recipe>>();
+                    //recipe = JsonConvert.DeserializeObject<Recipe.Service.Models.Recipe>(recipeString);
                 }
                 else {
 
                 }
             }
             
-            return View(recipe);
+            return View(recipes);
         }
 
         public IActionResult Error()
