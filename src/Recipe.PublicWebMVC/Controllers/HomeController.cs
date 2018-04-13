@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using PublicWebMVC.Models;
 using Recipe.Service.Models;
 
@@ -29,7 +30,8 @@ namespace PublicWebMVC.Controllers
 
                 if (response.IsSuccessStatusCode)
                 {
-                    recipe = await response.Content.ReadAsAsync<Recipe.Service.Models.Recipe>();
+                    string recipeString = await response.Content.ReadAsStringAsync();
+                    recipe = JsonConvert.DeserializeObject<Recipe.Service.Models.Recipe>(recipeString);
                 }
                 else {
 

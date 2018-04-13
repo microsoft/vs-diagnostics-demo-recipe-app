@@ -9,21 +9,16 @@ namespace Recipe.Service.Controllers
     [EnableCors("*", "*", "*")]
     public class RecipesController : ApiController
     {
+        [Route("api/recipes/{name}")]
         [HttpGet]
-        public Models.Recipe Get(string id)
+        public Models.Recipe Get(string name)
         {
-            long idAsLong = 0;
-            if (!long.TryParse(id, out idAsLong))
-            {
-                throw new HttpException(404, "Invalid id");
-            }
-
             //List<Models.Recipe> recipes = Models.RecipeManager.Singleton.GetRecipeByName(name);
-            Models.Recipe recipe = Models.RecipeManager.Singleton.GetRecipeById(idAsLong);
+            Models.Recipe recipe = RecipeManager.Singleton.GetRecipeByName(name);
 
             if (recipe == null)
             {
-                throw new HttpException(404, $"Recipes not found for name {id}");
+                throw new HttpException(404, $"Recipe not found for name {name}");
             }
             return recipe;
         }
