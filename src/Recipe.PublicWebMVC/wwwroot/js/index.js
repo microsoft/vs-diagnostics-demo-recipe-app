@@ -1,6 +1,6 @@
 ﻿(function () {
     $(document).ready(function () {
-        $.getJSON("http://localhost:64407/api/recipes/?limit=9", function (data) {
+        $.getJSON("http://localhost:64407/api/recipes/?limit=32", function (data) {
             var cardContainer = $("#cardContainer");
 
             if (!data) {
@@ -10,8 +10,8 @@
             $.each(data, function (key, recipe) {
                 var html = "";
 
-                html += "<div class='col-md-4'>";
-                html += "    <div class='card mb-4 box-shadow'>";
+                html += "<div class='col-md-3'>";
+                html += "    <div class='card mb-3 box-shadow'>";
                 html += "       <img class='card-img-top' src='" + recipe.image + "' alt='Image of " + recipe.title + "'>";
                 html += "       <div class='card-body'>";
                 html += "           <p class='card-text'>" + recipe.title + "</p>";
