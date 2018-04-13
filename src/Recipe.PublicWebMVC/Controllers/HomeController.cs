@@ -21,7 +21,7 @@ namespace PublicWebMVC.Controllers
 
         public async Task<IActionResult> SearchResults(string searchString)
         {
-            Recipe.Service.Models.Recipe recipe = null;
+            IList<Recipe.Service.Models.Recipe> recipes = null;
 
             if (!String.IsNullOrEmpty(searchString)) {
                 HttpClient client = new HttpClient();
@@ -30,15 +30,15 @@ namespace PublicWebMVC.Controllers
 
                 if (response.IsSuccessStatusCode)
                 {
-                    string recipeString = await response.Content.ReadAsStringAsync();
-                    recipe = JsonConvert.DeserializeObject<Recipe.Service.Models.Recipe>(recipeString);
+                    recipes = await response.Content.ReadAsAsync<IList<Recipe.Service.Models.Recipe>>();
+                    //recipe = JsonConvert.DeserializeObject<Recipe.Service.Models.Recipe>(recipeString);
                 }
                 else {
 
                 }
             }
             
-            return View(recipe);
+            return View(recipes);
         }
 
         public IActionResult Error()
