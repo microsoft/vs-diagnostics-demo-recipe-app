@@ -1,0 +1,19 @@
+﻿@model IEnumerable<Recipe.Service.Models.Recipe>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h2>Welcome to the Recipe App!</h2>
+
+@*<div class="inline">
+	<button type="button" class="btn btn-primary">Create New Recipe</button>
+</div>*@
+
+<div class="inline">
+	<form asp-controller="Recipes" asp-action="Index" class="form-inline">
+		<input class="form-control mr-sm-2" type="search" placeholder="Search Recipes" aria-label="Search">
+		<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+	</form>
+</div>
+

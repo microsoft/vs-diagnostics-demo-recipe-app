@@ -17,8 +17,11 @@
                 html += "           <p class='card-text'>" + recipe.title + "</p>";
                 html += "           <div class='d-flex justify-content-between align-items-center'>";
                 html += "               <small class='text-muted'>from " + recipe.sourceName + "</small>";
-                html += "               <small class='text-muted'>" + recipe.readyInMinutes + " mins</small>";
+                html += "               <small class='text-muted'><strong>" + recipe.readyInMinutes + " mins</strong></small>";
                 
+                html += "           </div>";
+                html += "           <div class='d-flex justify-content-between align-items-center'>";
+                html += "               <small class='text-muted'>Rating: " + recipe.spoonacularScore + "%</small>";
                 html += "           </div>";
                 html += "       </div>";
                 html += "    </div>";
