@@ -7,3 +7,4 @@
 3. [No Side Effect Expression Evaluation](NoSideEffects.md)
 4. [Results View In Watches](ResultsView.md)
 5. [Number Formatting](NumberFormatting.md)
+6. [ReturnValues](ReturnValues.md)

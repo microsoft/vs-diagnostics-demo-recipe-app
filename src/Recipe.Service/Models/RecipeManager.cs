@@ -51,7 +51,7 @@ namespace Recipe.Service.Models
             IEnumerable<Recipe> recipes =  (from recipe in Recipes.Values
                                             orderby recipe.SpoonacularScore descending
                                             select recipe).Skip(start).Take(limit);
-
+            // var temp = "   Hello world!   ".ToLower().ToUpper().Trim();
             return recipes.ToList();
         }
 
