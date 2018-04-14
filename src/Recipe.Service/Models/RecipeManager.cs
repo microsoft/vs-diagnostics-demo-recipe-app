@@ -46,6 +46,19 @@ namespace Recipe.Service.Models
             return Recipes[id];
         }
 
+        public List<Recipe> GetRecipesByName(string name) {
+            Recipe[] recipesArray = Recipes.Values.ToArray();
+            List<Recipe> recipes = new List<Recipe>();
+            //List<Recipe> recipes = null; USE THIS FOR NULL EXCEPTION EXERCISE
+            for (int i = 0; i < recipesArray.Length; i++) {
+                // Perform case insensitive search
+                if (recipesArray[i].Title.IndexOf(name, StringComparison.OrdinalIgnoreCase) >= 0) {
+                    recipes.Add(recipesArray[i]);
+                }
+            }
+            return recipes;
+        }
+
         public List<Recipe> GetRecipes(int start, int limit, string sortBy, string orderBy)
         {
             IEnumerable<Recipe> recipes =  (from recipe in Recipes.Values
