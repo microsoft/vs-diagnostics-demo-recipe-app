@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+// using System.Diagnostics;
 using System.Globalization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
@@ -7,6 +8,7 @@ using Newtonsoft.Json.Converters;
 
 namespace Recipe.Service.Models
 {
+    //[DebuggerDisplay("{Title,nq}")] //, id: {Id}
     public partial class Recipe
     {
         [JsonProperty("vegetarian", NullValueHandling = NullValueHandling.Ignore)]

@@ -14,7 +14,7 @@ In Visual Studio the watch window supports a number of [pseudovariables](https:/
 ![Watch window with the expression $ReturnValue being inspected](ReturnValues-Watch.png)
 
 
-## Mulitple Returns
+## Multiple Return Values
 In addition to seeing the return value from a single finction you can also use the `$ReturnValue` pseudovariables to view the return values from chained expressions e.g. `foo().bar()`. Simply append a number that coresponds to methods place in the chained expression in the `foo().bar()` example the return value for `foo()` would be `$ReturnValue1` and the return value for `bar()` would be `$ReturnValue2`.
 
 1. Add the example code below to `RecipeManager.cs` line `54`.
