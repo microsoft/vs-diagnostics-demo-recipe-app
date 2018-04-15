@@ -4,7 +4,7 @@ IntelliTrace is part of Visual Studio Enterprise, one of the most compelling fea
 ## Enabling via Tools Options 
 1. Open the *Tools* > *Options* dialog and locate the *IntelliTrace* > *General* options and select the *IntelliTrace Events and snapshots*
 
-![Visual Studio tools options dialog with "IntelliTrace events and snapshots" selected](StepBack-IntelliTraceOptions.png)
+![Visual Studio tools options dialog with "IntelliTrace events and snapshots" selected](EnableSnapshots-IntelliTraceOptions.png)
 
 Snapshots are will be enabled starting with the next debug session. 
 
