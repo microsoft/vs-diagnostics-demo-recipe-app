@@ -9,6 +9,7 @@
 5. [Number Formatting](NumberFormatting.md)
 6. [ReturnValues](ReturnValues.md)
 7. [DebuggerDisplayAttribute](DebuggerDisplayAttribute.md)
+8. [Callstack Parameter Values](CallStackParameterValues.md)
 
 ## IntelliTrace
 

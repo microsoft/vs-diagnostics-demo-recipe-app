@@ -1,6 +1,6 @@
 ﻿(function () {
     $(document).ready(function () {
-        $.getJSON("http://localhost:64407/api/recipes/?limit=32", function (data) {
+        $.getJSON("http://localhost:64407/api/recipes/?limit=16", function (data) {
             var cardContainer = $("#cardContainer");
 
             if (!data) {
@@ -10,7 +10,7 @@
             $.each(data, function (key, recipe) {
                 var html = "";
 
-                html += "<div class='col-md-3'>";
+                html += "<div class='col-md-3 recipe-card'>";
                 html += "    <div class='card mb-3 box-shadow'>";
                 html += "       <img class='card-img-top' src='" + recipe.image + "' alt='Image of " + recipe.title + "'>";
                 html += "       <div class='card-body'>";
@@ -27,7 +27,12 @@
                 html += "    </div>";
                 html += "</div>";
 
-                cardContainer.append(html);
+                var card = $(html);
+                card.click(function () {
+                    window.location.href = "/home/recipe/" + recipe.id;
+                });
+
+                cardContainer.append(card);
             });
         });
     });
