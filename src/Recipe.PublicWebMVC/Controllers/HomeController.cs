@@ -31,10 +31,6 @@ namespace PublicWebMVC.Controllers
                 if (response.IsSuccessStatusCode)
                 {
                     recipes = await response.Content.ReadAsAsync<IList<Recipe.Service.Models.Recipe>>();
-                    //recipe = JsonConvert.DeserializeObject<Recipe.Service.Models.Recipe>(recipeString);
-                }
-                else {
-
                 }
             }
             
