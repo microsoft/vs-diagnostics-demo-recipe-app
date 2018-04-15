@@ -32,7 +32,6 @@ namespace Recipe.Service.Controllers
         [HttpGet]
         public List<Models.Recipe> GetByName(string name)
         {
-            //List<Models.Recipe> recipes = Models.RecipeManager.Singleton.GetRecipeByName(name);
             List<Models.Recipe> recipes = RecipeManager.Singleton.GetRecipesByName(name);
 
             if (recipes == null)
