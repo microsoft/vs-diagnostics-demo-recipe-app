@@ -57,5 +57,13 @@ namespace Recipe.Service.Controllers
             }
             return recipes;
         }
+
+
+        [Route("api/recipes/speedtest/")]
+        [HttpGet]
+        public bool SpeedTest()
+        {
+            return RecipeManager.Singleton.SpeedTest();
+        }
     }
 }

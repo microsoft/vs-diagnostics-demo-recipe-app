@@ -68,6 +68,20 @@ namespace Recipe.Service.Models
             return recipes.ToList();
         }
 
+        public bool SpeedTest()
+        {
+            List<Recipe> linqRecipesLocalCopy = new List<Recipe>(Recipes.Values); 
+            List<Recipe> linqRecipes = GetRecipesLinqSpeedTest(linqRecipesLocalCopy);
+
+            List<Recipe> bubbleSortLocalCopy = new List<Recipe>(Recipes.Values);
+            List<Recipe> bubbleSortRecipes = GetRecipesBubbleSortSpeedTest(bubbleSortLocalCopy);
+
+            // Pointless comparison.
+            bool hasSameTopResult = linqRecipes[0].Id == bubbleSortRecipes[0].Id;
+
+            return hasSameTopResult;
+        }
+
         private Recipe LoadRecipeFromJson(string json)
         {
             return JsonConvert.DeserializeObject<Recipe>(json, Converter.Settings);
@@ -85,5 +99,31 @@ namespace Recipe.Service.Models
             };
         }
 
+        private List<Recipe> GetRecipesLinqSpeedTest(List<Recipe> recipes)
+        {
+            recipes = ( from recipe in recipes
+                        orderby recipe.SpoonacularScore descending
+                        select recipe).Take(10).ToList();
+
+            return recipes;
+        }
+
+        private List<Recipe> GetRecipesBubbleSortSpeedTest(List<Recipe> recipes)
+        {
+            for (int i = 0; i < recipes.Count; i++)
+            {
+                for (int j = recipes.Count - 1; j > i; j--)
+                {
+                    if (recipes[j].SpoonacularScore < recipes[j - 1].SpoonacularScore)
+                    {
+                        var temp = recipes[j];
+                        recipes[j] = recipes[j - 1];
+                        recipes[j - 1] = temp;
+                    }
+                }
+            }
+
+            return recipes;
+        }
     }
 }
