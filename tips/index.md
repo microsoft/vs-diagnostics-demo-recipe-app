@@ -1,6 +1,17 @@
 # Visual Studio Diagnostic Tips & Tricks
 
-## Debugger
+## Debugger - Execuition Control
+
+1. [Break on Exception](BreakOnException.md)
+2. [Conditional Breakpoints](ConditionalBreakpoints.md)
+3. [Function Breakpoints](FunctionBreakpoints.md)
+4. [Run to Click](RunToClick.md)
+5. [Run to Cursort](RunToCursor.md)
+6. [Set Next Statement](SetNextStatement.md)
+7. [TracePoints](TracePoints.md)
+
+
+## Debugger - Inspection
 
 1. [Multiple Startup Projects](MultipleStartupProjects.md)
 2. [Pinned Datatips](PinnedDatatip.md)
