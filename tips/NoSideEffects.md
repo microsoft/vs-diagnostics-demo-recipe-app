@@ -50,9 +50,20 @@ public Recipe NextRecipe
 ```
 **Warning: The above is an insane property - getters should be idempotent.**
 
-1. In the **Recipe.Service** project, set a breakpoint in `Models/RecipeManager.cs` **line 86**.
-2. Navigate to the home page which should cause the breakpoint to hit.
-3. In the watch window add the expression `RecipeManager.Singleton.NextRecipe, nse`.
-4. Inspect the item. 
+1. In the **Recipe.Service** project, add the above code to the bottom of **Models/RecipeManager.cs**. 
 
-This illustrates how `, nse` works. You can think of `,nse` as executing the code involved but without writting back to your application. So in this case when you look an item with `,nse` you get the next item every time you inspect the object but your application isn't changed. 
+2.  In the `RecipeManager` constructor after the `foreach` loop, add the following code:
+
+    `keysEnumerator = Recipes.Keys.GetEnumerator();`
+
+3. In the **Recipe.Service** project, set a breakpoint at **line 24** in **Controllers/RecipeControllers.cs**.
+
+4. Run the application, which should cause the breakpoint to hit.
+
+5. In the **Watch Window** add the expression `RecipeManager.Singleton.NextRecipe, nse`.
+
+6. Inspect the watch window item. 
+
+This illustrates how `, nse` works. You can think of `,nse` as executing the code involved but without writing back to your application. So in this case when you look an item with `,nse` you get the next item every time you inspect the object but your application isn't changed. 
+
+7. Stop the application and delete the code you added during this exercise.

@@ -32,13 +32,19 @@ The snapshot feature is really powerful when debugging code that is using `await
 
 ![Code for first exception](SnapshotOnException-CodeForFirstException.png)
 
+4. To fix this issue, in the **Controllers/HomeController.cs** file, change `badhost`to `localhost` at **line 73**.
 
+![Changed code from badhost to local host](SnapshotOnException-CodeChange.png)
+
+5. Run the application and click on any recipe.  It should correctly send you to the recipe's detail page.
+
+![Recipe Details Page](SnapshotOnException-RecipeDetails.png)
 
 ## Example = Async Exceptions (Simplified)
 
 1. Set the project **AsyncExceptionConsoleDemo** as the *only* startup project (i.e. set the other two projects to "None").
 
-![Seting startup project](SnapshotOnException-SetStartupProject.png)
+![Setting startup project](SnapshotOnException-SetStartupProject.png)
 
 2. Start debugging **(F5)**.
 3. Visual Studio will stop on the exception on **line 25**.
@@ -52,4 +58,5 @@ The snapshot feature is really powerful when debugging code that is using `await
 6. Inspect `p` and note it's `null`. This is the source of the problem and where a null check is needed to fix the 'bug'.
 
 ![Stopped on exception](SnapshotOnException-ConsoleFirstException.png)
+
 
