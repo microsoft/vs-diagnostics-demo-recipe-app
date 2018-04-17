@@ -22,6 +22,9 @@
 7. [DebuggerDisplay Attribute](DebuggerDisplayAttribute.md)
 8. [Callstack Parameter Values](CallStackParameterValues.md)
 
+## Profiler 
+1. [CPU Usage While Debugging](CPUUsage.md)
+
 ## IntelliTrace
 
 1. [Enabling Snapshots](EnableSnapshots.md) 

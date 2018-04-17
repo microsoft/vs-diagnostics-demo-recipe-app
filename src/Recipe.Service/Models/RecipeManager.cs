@@ -27,7 +27,7 @@ namespace Recipe.Service.Models
 
         public RecipeManager()
         {
-            string resolvedPath  = System.Web.HttpContext.Current.Server.MapPath(RecipesPath);
+            string resolvedPath = System.Web.HttpContext.Current.Server.MapPath(RecipesPath);
 
             foreach (string fileName in Directory.GetFiles(resolvedPath))
             {
@@ -39,7 +39,7 @@ namespace Recipe.Service.Models
 
         public Recipe GetRecipeById(long id)
         {
-            if(!Recipes.ContainsKey(id))
+            if (!Recipes.ContainsKey(id))
             {
                 return null;
             }
@@ -62,20 +62,18 @@ namespace Recipe.Service.Models
 
         public List<Recipe> GetRecipes(int start, int limit, string sortBy, string orderBy)
         {
-            IEnumerable<Recipe> recipes =  (from recipe in Recipes.Values
-                                            orderby recipe.SpoonacularScore descending
-                                            select recipe).Skip(start).Take(limit);
+            IEnumerable<Recipe> recipes = (from recipe in Recipes.Values
+                                           orderby recipe.SpoonacularScore descending
+                                           select recipe).Skip(start).Take(limit);
             // var temp = "   Hello world!   ".ToLower().ToUpper().Trim();
             return recipes.ToList();
         }
 
         public bool SpeedTest()
         {
-            List<Recipe> linqRecipesLocalCopy = new List<Recipe>(Recipes.Values); 
-            List<Recipe> linqRecipes = GetRecipesLinqSpeedTest(linqRecipesLocalCopy);
+            List<Recipe> linqRecipes = GetRecipesLinqSpeedTest();
 
-            List<Recipe> bubbleSortLocalCopy = new List<Recipe>(Recipes.Values);
-            List<Recipe> bubbleSortRecipes = GetRecipesBubbleSortSpeedTest(bubbleSortLocalCopy);
+            List<Recipe> bubbleSortRecipes = GetRecipesBubbleSortSpeedTest();
 
             // Pointless comparison.
             bool hasSameTopResult = linqRecipes[0].Id == bubbleSortRecipes[0].Id;
@@ -100,7 +98,19 @@ namespace Recipe.Service.Models
             };
         }
 
-        private List<Recipe> GetRecipesLinqSpeedTest(List<Recipe> recipes)
+        private List<Recipe> GetRecipesLinqSpeedTest()
+        {
+            List<Recipe> linqRecipes = null;
+            for (int i = 0; i < 100; i++)
+            {
+                List<Recipe> lingqLocalCopy = new List<Recipe>(Recipes.Values);
+                linqRecipes = GetRecipesLinqSpeedTestInner(lingqLocalCopy);
+            }
+
+            return linqRecipes;
+        }
+
+        private List<Recipe> GetRecipesLinqSpeedTestInner(List<Recipe> recipes)
         {
             recipes = ( from recipe in recipes
                         orderby recipe.SpoonacularScore descending
@@ -108,8 +118,19 @@ namespace Recipe.Service.Models
 
             return recipes;
         }
+        private List<Recipe> GetRecipesBubbleSortSpeedTest()
+        {
+            List<Recipe> bubbleSortRecipes=null;
+            for (int i = 0; i < 100; i++)
+            {
+                List<Recipe> bubbleSortLocalCopy = new List<Recipe>(Recipes.Values);
+                bubbleSortRecipes = GetRecipesBubbleSortSpeedTestInner(bubbleSortLocalCopy);
+            }
 
-        private List<Recipe> GetRecipesBubbleSortSpeedTest(List<Recipe> recipes)
+            return bubbleSortRecipes;
+        }
+
+        private List<Recipe> GetRecipesBubbleSortSpeedTestInner(List<Recipe> recipes)
         {
             for (int i = 0; i < recipes.Count; i++)
             {
