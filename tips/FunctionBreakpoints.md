@@ -1,9 +1,10 @@
 # Function Breakpoints
 
-Function Breakpoints allow you to run your application until a specific function is called.  A function breakpoint can be used to check that the client is correctly calling the GetRecipesByName() function.
+Function Breakpoints allow you to run your application until a specific function is called.  A function breakpoint can be used to check that the client is correctly calling the `GetRecipesByName()` function.  This feature is useful when you know the function name you want to break at but are unsure about where that function is located.
+
 1.	Choose **Debug --> New Breakpoint --> Break at Function**.
 
-2.	Enter *“GetRecipesByName”* and hit **ENTER**.  You can view this breakpoint in the **Breakpoints** tab.
+2.	Enter **“GetRecipesByName”** and hit **ENTER**.  You can view this breakpoint in the **Breakpoints** tab.
 
 3.	Run the application.  In the search box, enter “chocolate” and execute the search.  You should be able to see a break occur at the function’s location when `GetRecipesByName()` is called.
 
