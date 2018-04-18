@@ -129,16 +129,16 @@ namespace PublicWebMVC.Models
         public string Name { get; set; }
 
         [JsonProperty("steps", NullValueHandling = NullValueHandling.Ignore)]
-        public List<Step> Steps { get; set; }
+        public List<StepInfo> Steps { get; set; }
     }
 
-    public partial class Step
+    public partial class StepInfo
     {
         [JsonProperty("number", NullValueHandling = NullValueHandling.Ignore)]
         public long? Number { get; set; }
 
         [JsonProperty("step", NullValueHandling = NullValueHandling.Ignore)]
-        public string StepStep { get; set; }
+        public string Step { get; set; }
 
         [JsonProperty("ingredients", NullValueHandling = NullValueHandling.Ignore)]
         public List<Ent> Ingredients { get; set; }
