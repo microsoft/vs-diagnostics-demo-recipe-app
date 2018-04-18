@@ -70,7 +70,7 @@ namespace PublicWebMVC.Controllers
         private async Task<Models.Recipe> GetRecipeById(long id)
         {
             // Note: This is all crazytown code to demonstrate snapshots on exceptions
-            apiClient = new RestClient("http://badhost:64407"); //http://localhost:64407
+            apiClient = new RestClient("http://localhost:64407"); //http://localhost:64407
             RestRequest request = new RestRequest();
             request.Resource = "api/recipes/{id}";
             request.AddUrlSegment("id", id);
