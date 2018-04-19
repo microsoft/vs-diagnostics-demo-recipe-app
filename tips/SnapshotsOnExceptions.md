@@ -2,7 +2,7 @@
 The **Snapshots on Exceptions** feature of IntelliTrace takes snapshots of your application when an exception occurs. You can then use the **Diagnostic Tools** window to inspect that exception and the entire state of your application when the exception occurred.
 
 ### Prerequisites
-1. To enable Snapshots on Exceptions follow the steps to [Enable Snapshots](EnableSnapshots.md).
+1. To enable Snapshots on Exceptions follow the steps on [Enabling Snapshots](EnableSnapshots.md).
 2. Enable debugging only for **Recipe.PublicWebMVC**  using the [Multiple Startup Projects Dialog](MultipleStartupProjects.md).
 
 ### Example - Exceptions
@@ -42,7 +42,7 @@ The snapshot feature is really powerful when debugging code that is using `await
 
 ## Example = Async Exceptions (Simplified)
 
-1. Set the project **AsyncExceptionConsoleDemo** as the *only* startup project (i.e. set the other two projects to "None").
+1. Set the project **AsyncExceptionConsoleDemo** as the *only* startup project (i.e. set the **AsyncExceptionConsoleDemo** project to "Start" other two projects to "None").
 
 ![Setting startup project](SnapshotOnException-SetStartupProject.png)
 
