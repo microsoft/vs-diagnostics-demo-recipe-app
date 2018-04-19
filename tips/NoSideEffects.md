@@ -32,6 +32,8 @@ Bonus Tip: When the last watch of `++limit, nse` was added the watch for `limit`
 ### Example: Getters with Side Effects
 In this example we have some crazy code that is using an IEnumerator in a getter property to return an item. The problem with this approach is that every time the property is accessed the getter will cause the iterator to move to the next item. 
 
+Add the code below to `RecipeManager.cs` inside the `RecipeManager` class definition. 
+
 ```
 private IEnumerator<long?> keysEnumerator;
 public Recipe NextRecipe
