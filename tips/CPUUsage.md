@@ -29,6 +29,7 @@ While your debugging your app in Visual Studio you can also profile your applica
 
 ![Call tree view](CPUUsage-CallTree.png)
 
+![Call tree view](CPUUsage-CallTreeView.png)
 
 ## Notes
 

@@ -48,7 +48,7 @@ namespace Recipe.Service.Models
 
         public List<Recipe> GetRecipesByName(string name) {
             Recipe[] recipesArray = Recipes.Values.ToArray();
-            List<Recipe> recipes = new List<Recipe>();
+            List<Recipe> recipes = null; //new List<Recipe>();
 
             for (int i = 0; i < recipesArray.Length; i++) {
 
