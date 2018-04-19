@@ -1,9 +1,10 @@
 # Tracepoints
+
 **Tracepoints** are breakpoints that allow you to print messages and values to the output window without having to halt program execution or break at that specific point while debugging.
 
-1.	Using the same breakpoint made during the conditional breakpoint exercise, hover over the breakpoint and select the **Settings** gear icon that appears.
+1.	Using the same breakpoint made during the [conditional breakpoint](ConditionalBreakpoints.md) exercise, hover over the breakpoint and select the **Settings** gear icon that appears.
 
-2.	Check the **Actions** option and enter the following in the **"Log a Message to Output Window"** textbox:
+2.	Un-check the **Conditions** option if you haven't already. Check the **Actions** option and enter the following in the **"Log a Message to Output Window"** textbox:
 
     `{recipesArray[i].Title} found at index {i}`
 
