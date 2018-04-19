@@ -16,17 +16,17 @@ In this example we'll be executing some code in a watch expression that will cha
 
 ![Watch 'limit' added with a value of 10](NoSideEffect-AddFirstWatch.png)
 
-4. Add a new watch with the expression `limit++` this will cause the value of `limit` to increment.
+4. Add a new watch with the expression `++limit` this will cause the value of `limit` to increment.
 
-![Watch 'limit++' added with a value of 11](NoSideEffect-AddWatchWithSideEffect.png)
+![Watch '++limit' added with a value of 11](NoSideEffect-AddWatchWithSideEffect.png)
 
-5. Clear the `limit++` watch.
+5. Add a new watch with the expression `++limit, nse`.
 
-6. Add a new watch with the expression `limit++, nse`.
+![Watch '++limit, nse' added with a value of 11](NoSideEffect-AddWatchWithNoSideEffect.png)
 
-![Watch 'limit++, nse' added with a value of 11](NoSideEffect-AddWatchWithNoSideEffect.png)
+6. Note how the value of limit is not increment again and stays at it's previous value.
 
-7. Note how the value of limit is not increment again and stays at it's previous value.
+Bonus Tip: When the last watch of `++limit, nse` was added the watch for `limit` was updated but the watch value for `++limit` was not updated. This was because `++limit` would have side effects and wasn't auto-evaluated you need to use the **refresh** icon on the right of the watch value to re-evaluate it. 
 
 
 ### Example: Getters with Side Effects
