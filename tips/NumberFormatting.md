@@ -10,7 +10,7 @@ In the watch window you can force the visualization of an int into either it's d
 3. Add a watch value of `limit`.
 4. Add a watch value of `limit, h` to see the hexadecimal representation of `limit`.
 
-![Watch window with watches for 'limit' and 'limit, h'](NumberFormatting-Watch.png)
+![Watch window with watches for 'limit' and 'limit, h'](NumberFormatting-Watch1.png)
 
 ### Context Menu
 You can also accomplish the same thing with the **Hexadecimal Display** context menu item for a watch.

@@ -2,7 +2,8 @@
 The **Snapshots on Exceptions** feature of IntelliTrace takes snapshots of your application when an exception occurs. You can then use the **Diagnostic Tools** window to inspect that exception and the entire state of your application when the exception occurred.
 
 ### Prerequisites
-1. To enable Snapshots on Exceptions follow the steps on [Enabling Snapshots](EnableSnapshots.md).
+1. To enable Snapshots on Exceptions, follow the steps on [Enabling Snapshots](EnableSnapshots.md).
+
 2. Enable debugging only for **Recipe.PublicWebMVC**  using the [Multiple Startup Projects Dialog](MultipleStartupProjects.md).
 
 ### Example - Exceptions
@@ -12,7 +13,7 @@ The **Snapshots on Exceptions** feature of IntelliTrace takes snapshots of your 
 3. Choose a recipe and click on it to navigate to it's details page (e.g. `http://localhost:61906/home/recipe/715702`). You should get an error page but not stop in the debugger.
 4. Go to Visual Studio and open the **Diagnostic Tools Window** (it should already be open on the right hand side).
 5. Go to the **Events** tab. 
-6. In the **Filter Events** box type **"exception"** to filter the list down to just the exceptions.
+6. In the **Filter Events** box, type **"exception"** to filter the list down to just the exceptions.
 7. Select the **Exception** event with the **snapshot** icon as displayed below(![Snapshot icon](SnapshotOnException-SnapshotIcon.png)). This indicates that a snapshot was taken for this exception.
 
 ![Diagnostic tool window](SnapshotOnException-DiagnosticToolWindow.png)

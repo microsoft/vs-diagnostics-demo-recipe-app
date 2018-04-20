@@ -14,45 +14,43 @@ In this example we'll be executing some code in a watch expression that will cha
 
 3. Back in VS go to the **Watch Window** and enter the expression `limit`.
 
-![Watch 'limit' added with a value of 10](NoSideEffect-AddFirstWatch.png)
+![Watch 'limit' added with a value of 10](NoSideEffect-AddFirstWatch1.png)
 
 4. Add a new watch with the expression `++limit` this will cause the value of `limit` to increment.
 
-![Watch '++limit' added with a value of 11](NoSideEffect-AddWatchWithSideEffect.png)
+![Watch '++limit' added with a value of 11](NoSideEffect-AddWatchWithSideEffect1.png)
 
 5. Add a new watch with the expression `++limit, nse`.
 
-![Watch '++limit, nse' added with a value of 11](NoSideEffect-AddWatchWithNoSideEffect.png)
+![Watch '++limit, nse' added with a value of 11](NoSideEffect-AddWatchWithNoSideEffect1.png)
 
 6. Note how the value of limit is not increment again and stays at it's previous value.
 
-Bonus Tip: When the last watch of `++limit, nse` was added the watch for `limit` was updated but the watch value for `++limit` was not updated. This was because `++limit` would have side effects and wasn't auto-evaluated you need to use the **refresh** icon on the right of the watch value to re-evaluate it. 
+**Bonus Tip**: When the last watch of `++limit, nse` was added the watch for `limit` was updated but the watch value for `++limit` was not updated. This was because `++limit` would have side effects and wasn't auto-evaluated you need to use the **refresh** icon on the right of the watch value to re-evaluate it. 
 
 
 ### Example: Getters with Side Effects
-In this example we have some crazy code that is using an IEnumerator in a getter property to return an item. The problem with this approach is that every time the property is accessed the getter will cause the iterator to move to the next item. 
+In this example, we have some crazy code that is using an IEnumerator in a getter property to return an item. The problem with this approach is that every time the property is accessed, the getter will cause the iterator to move to the next item. 
 
-Add the code below to `RecipeManager.cs` inside the `RecipeManager` class definition. 
-
-```
-private IEnumerator<long?> keysEnumerator;
-public Recipe NextRecipe
-{
-    get
+1. In the **Recipe.Service** project, navigate to **Models/RecipeManager.cs**. Add the code shown below inside the `RecipeManager` class definition.
+    ```
+    private IEnumerator<long?> keysEnumerator;
+    public Recipe NextRecipe
     {
-        if (!keysEnumerator.MoveNext())
+        get
         {
-            keysEnumerator.Reset();
+            if (!keysEnumerator.MoveNext())
+            {
+                keysEnumerator.Reset();
+            }
+
+            return Recipes[keysEnumerator.Current];
         }
-
-        return Recipes[keysEnumerator.Current];
+        set { }
     }
-    set { }
-}
-```
-**Warning: The above is an insane property - getters should be idempotent.**
+    ```
 
-1. In the **Recipe.Service** project, add the above code to the bottom of **Models/RecipeManager.cs**. 
+    **Warning: The above is an insane property - getters should be idempotent.**
 
 2.  In the `RecipeManager` constructor after the `foreach` loop, add the following code:
 
