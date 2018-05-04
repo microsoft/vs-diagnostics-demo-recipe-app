@@ -35,6 +35,7 @@ namespace Recipe.Service.Models
                 Recipe recipe = LoadRecipeFromJson(json);
                 Recipes.Add(recipe.Id, recipe);
             }
+            keysEnumerator = Recipes.Keys.GetEnumerator();
         }
 
         public Recipe GetRecipeById(long id)
@@ -48,7 +49,7 @@ namespace Recipe.Service.Models
 
         public List<Recipe> GetRecipesByName(string name) {
             Recipe[] recipesArray = Recipes.Values.ToArray();
-            List<Recipe> recipes = null; //new List<Recipe>();
+            List<Recipe> recipes = null; //new List<Recipe>()
 
             for (int i = 0; i < recipesArray.Length; i++) {
 
@@ -65,7 +66,8 @@ namespace Recipe.Service.Models
             IEnumerable<Recipe> recipes = (from recipe in Recipes.Values
                                            orderby recipe.SpoonacularScore descending
                                            select recipe).Skip(start).Take(limit);
-            // var temp = "   Hello world!   ".ToLower().ToUpper().Trim();
+
+            //var temp = "   Hello world!   ".ToLower().ToUpper().Trim();
             return recipes.ToList();
         }
 
@@ -146,6 +148,21 @@ namespace Recipe.Service.Models
             }
 
             return recipes;
+        }
+
+        private IEnumerator<long?> keysEnumerator;
+        public Recipe NextRecipe
+        {
+            get
+            {
+                if (!keysEnumerator.MoveNext())
+                {
+                    keysEnumerator.Reset();
+                }
+
+                return Recipes[keysEnumerator.Current];
+            }
+            set { }
         }
     }
 }
