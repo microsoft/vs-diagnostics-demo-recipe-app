@@ -33,6 +33,7 @@ namespace Recipe.Service.Models
             {
                 string json = File.ReadAllText(fileName);
                 Recipe recipe = LoadRecipeFromJson(json);
+                recipe.Hits = 0; //initialize # of clicks to 0 for each recipe
                 Recipes.Add(recipe.Id, recipe);
             }
             keysEnumerator = Recipes.Keys.GetEnumerator();
@@ -49,16 +50,20 @@ namespace Recipe.Service.Models
 
         public List<Recipe> GetRecipesByName(string name) {
             Recipe[] recipesArray = Recipes.Values.ToArray();
-            List<Recipe> recipes = null;
+            List<Recipe> recipes = new List<Recipe>();
 
             for (int i = 0; i < recipesArray.Length; i++) {
-
                 // Perform case insensitive search
                 if (recipesArray[i].Title.IndexOf(name, StringComparison.OrdinalIgnoreCase) >= 0) {
                     recipes.Add(recipesArray[i]);
                 }
             }
             return recipes;
+        }
+
+        public void UpdateRecipe(long id, Models.Recipe recipe)
+        {
+            Recipes[id] = recipe;
         }
 
         public List<Recipe> GetRecipes(int start, int limit, string sortBy, string orderBy)
@@ -68,6 +73,7 @@ namespace Recipe.Service.Models
                                            select recipe).Skip(start).Take(limit);
 
             //var temp = "   Hello world!   ".ToLower().ToUpper().Trim();
+
             return recipes.ToList();
         }
 
@@ -81,6 +87,7 @@ namespace Recipe.Service.Models
             bool hasSameTopResult = linqRecipes[0].Id == bubbleSortRecipes[0].Id;
 
             return hasSameTopResult;
+            
         }
 
         private Recipe LoadRecipeFromJson(string json)

@@ -1,5 +1,9 @@
-﻿using Recipe.Service.Models;
+﻿using Microsoft.AspNetCore.Mvc;
+using Recipe.Service.Models;
 using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Web;
 using System.Web.Http;
 using System.Web.Http.Cors;
@@ -9,6 +13,8 @@ namespace Recipe.Service.Controllers
     [EnableCors("*", "*", "*")]
     public class RecipesController : ApiController
     {
+
+
         /// <summary>
         /// Lists an index of all recipes
         /// </summary>
@@ -40,8 +46,17 @@ namespace Recipe.Service.Controllers
             {
                 throw new HttpException(404, $"Recipe not found for id {id}");
             }
-
+            //this shouldn't be here! Use as data breakpoint example
+            recipe.Hits++;
             return recipe;
+        }
+
+        [Route("api/recipes/update/{id}")]
+        [HttpPut]
+        public void UpdateRecipe(string id, Models.Recipe recipe) {
+            long idAsLong = 0;
+            long.TryParse(id, out idAsLong);
+            Models.RecipeManager.Singleton.UpdateRecipe(idAsLong, recipe);
         }
 
         [Route("api/recipes/search/{name}")]

@@ -22,6 +22,7 @@
                 html += "           </div>";
                 html += "           <div class='d-flex justify-content-between align-items-center'>";
                 html += "               <small class='text-muted'>Rating: " + recipe.spoonacularScore + "%</small>";
+                html += "               <small class='text-muted'>Hits: " + recipe.hits + "</small>";
                 html += "           </div>";
                 html += "       </div>";
                 html += "    </div>";

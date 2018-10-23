@@ -3,6 +3,10 @@
 # Lab Introduction
 As a casual or professional developer, you probably spend a lot of time debugging your code, sometimes longer than it takes to write your code.  While debugging can be repetitive, tedious, and time-consuming, Visual Studio contains a wide variety of features to create a faster, more productive debugging experience.  This lab will go beyond the basic console logs, breakpoints, and stepping mechanics to explore the more advanced debugging, diagnostic, and profiling tips and tricks that Visual Studio has to offer!
 
+# Lab Prerequisites
+* Visual Studio Enterprise 2017 version **15.7** or higher OR
+* Visual Studio Enterprise 2017 Preview 
+
 # What is Covered in this Lab?
 This lab will cover many debugging and profiling features including but not limited to the following:
 * Customizable Breakpoints
@@ -24,10 +28,12 @@ In Visual Studio, under **File--> Open--> Project/Solution**, navigate to **Desk
 
 ![File Explorer navigation to solution file](Introduction-FileExplorer.png)
 
-**NOTE:** Because each of the following exercises has components that build from previous ones, try completing these exercises in the order they are written.
+**NOTE 1:** Because each of the following exercises has components that build from previous ones, try completing these exercises in the order they are written.
 
-## Optional: Download From GitHub
-You can also access this source code from GitHub at [https://github.com/Microsoft/vs-diagnostics-demo-recipe-app](https://github.com/Microsoft/vs-diagnostics-demo-recipe-app).
+**NOTE 2:** Depending on your personal VS environment, certain features relevant to this lab may already be enabled or disabled. You may need to change some settings in your VS environment to fully complete an exercise.
+
+## Download From GitHub
+You can access this source code from GitHub at [https://github.com/Microsoft/vs-diagnostics-demo-recipe-app](https://github.com/Microsoft/vs-diagnostics-demo-recipe-app).
 
 ## Note: If you choose to complete exercises out of order, it's suggested that you complete all of Section 1 through Exercise 2.1 beforehand because later will involve code and settings made/fixed in these previous exercises. 
 

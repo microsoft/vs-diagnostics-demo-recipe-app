@@ -9,16 +9,30 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using PublicWebMVC.Models;
+using Microsoft.EntityFrameworkCore;
 using RestSharp;
+using System.Text;
 
 namespace PublicWebMVC.Controllers
 {
     public class HomeController : Controller
     {
+
         public IActionResult Index()
         {
             return View();
         }
+
+        // GET: 
+        [HttpGet]
+        public async Task<IActionResult> CreateRecipe() {
+            return View();
+        }
+
+        //[HttpPost]
+        //public async Task<IActionResult> CreateRecipe() {
+
+        //}
 
         public async Task<IActionResult> SearchResults(string searchString)
         {
@@ -57,6 +71,16 @@ namespace PublicWebMVC.Controllers
                 throw new Exception($"Recipe not found for id {id}");
             }
 
+            // increase hit count for selected recipe
+            recipe.Hits++;
+
+            // update recipe with new hit
+            StringContent content = new StringContent(JsonConvert.SerializeObject(recipe), Encoding.UTF8, "application/json");
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri("http://localhost:64407/api/recipes/update/");
+            HttpResponseMessage response = await client.PutAsync($"{recipe.Id}", content);
+            response.EnsureSuccessStatusCode();
+
             return View(recipe);
         }
 
@@ -75,7 +99,7 @@ namespace PublicWebMVC.Controllers
             request.Resource = "api/recipes/{id}";
             request.AddUrlSegment("id", id);
 
-            IRestResponse<Recipe> response = null;
+            IRestResponse<Models.Recipe> response = null;
 
             try
             {
@@ -90,10 +114,10 @@ namespace PublicWebMVC.Controllers
             return response.Data;
         }
 
-        private async Task<IRestResponse<Recipe>> ExecuteRestSharpAsync(RestRequest request)
+        private async Task<IRestResponse<Models.Recipe>> ExecuteRestSharpAsync(RestRequest request)
         {
             var cancellationTokenSource = new CancellationTokenSource();
-            IRestResponse<Recipe> response = await apiClient.ExecuteTaskAsync<Recipe>(request, cancellationTokenSource.Token);
+            IRestResponse<Models.Recipe> response = await apiClient.ExecuteTaskAsync<Models.Recipe>(request, cancellationTokenSource.Token);
             if(response.ErrorException != null)
             {
                 throw response.ErrorException;
