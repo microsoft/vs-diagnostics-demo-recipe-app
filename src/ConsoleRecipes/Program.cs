@@ -13,7 +13,7 @@ namespace ConsoleRecipes
 {
     class Program
     {
-        private string RecipesPath = Path.GetFullPath("App_Data/Recipes");
+        private string RecipesPath = "App_Data/Recipes";
         private Dictionary<long?, Recipe> Recipes = new Dictionary<long?, Recipe>();
         private Random rand = new Random();
 
