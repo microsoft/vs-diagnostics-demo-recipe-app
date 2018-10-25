@@ -34,4 +34,4 @@ While your debugging your app in Visual Studio you can also profile your applica
 ## Notes
 
 1. If you encounter an issue where you don't see any samples you will need to start CPU recording when your app launches. Just leave it on when you stop debugging and then relaunch the app.
-2. The profiler in Visual Studio uses CPU sampling to collect performance information. Samples are taken every ms so if your code runs fast not many smaples will be collected. Profiling works best if you can overload, even temporarly, the size of the profile by adding more items to a collection or by running the code mulitple times.
+2. The profiler in Visual Studio uses CPU sampling to collect performance information. Samples are taken every ms so if your code runs fast not many smaples will be collected. Profiling works best if you can overload, even temporarly, the size of the profile by adding more items to a collection or by running the code multiple times.
