@@ -19,9 +19,10 @@ namespace ConsoleRecipes
 
         public Program() {
 
-            foreach (string fileName in Directory.GetFiles(RecipesPath))
+            // Convert each json file to Recipe object and add to Recipes list 
+            for (int i = 0; i < Directory.GetFiles(RecipesPath).Length; i++)
             {
-                string json = File.ReadAllText(fileName);
+                string json = File.ReadAllText(Directory.GetFiles(RecipesPath)[i]);
                 Recipe recipe = LoadRecipeFromJson(json);
                 recipe.Hits = 0; //initialize # of clicks to 0 for each recipe
                 Recipes.Add(recipe.Id, recipe);

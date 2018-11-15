@@ -6,8 +6,7 @@ using System.Globalization;
 
 namespace ConsoleRecipes
 {
-
-    [DebuggerDisplay("{Title,nq}")] //, id: {Id}
+        [DebuggerDisplay("{Title,nq}")]
         public partial class Recipe
         {
             [JsonProperty("hits", NullValueHandling = NullValueHandling.Ignore)]
