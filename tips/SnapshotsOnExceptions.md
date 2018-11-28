@@ -8,21 +8,20 @@ The **Snapshots on Exceptions** feature of IntelliTrace takes snapshots of your 
 
 ### Example - Exceptions
 
-1. Start debugging (`F5`).
-2. Navigate the browser to `http://localhost:61906/`.
-3. Choose a recipe and click on it to navigate to it's details page (e.g. `http://localhost:61906/home/recipe/715702`). You should get an error page but not stop in the debugger.
-4. Go to Visual Studio and open the **Diagnostic Tools Window** (it should already be open on the right hand side).
-5. Go to the **Events** tab. 
-6. In the **Filter Events** box, type **"exception"** to filter the list down to just the exceptions.
-7. Select the **Exception** event with the **snapshot** icon as displayed below(![Snapshot icon](SnapshotOnException-SnapshotIcon.png)). This indicates that a snapshot was taken for this exception.
+1. Launch the application.
+2. Choose a recipe and click on it to navigate to it's details page (e.g. `http://localhost:XXXXX/home/recipe/715702`). You should get an error page but not stop in the debugger.
+3. Go to Visual Studio and open the **Diagnostic Tools Window** (it should already be open on the right hand side).
+4. Go to the **Events** tab. 
+5. In the **Filter Events** box, type **"exception"** to filter the list down to just the exceptions.
+6. Select the **Exception** event with the **snapshot** icon as displayed below(![Snapshot icon](SnapshotOnException-SnapshotIcon.png)). This indicates that a snapshot was taken for this exception.
 
     ![Diagnostic tool window](SnapshotOnException-DiagnosticToolWindow.png)
 
-8. Double-click on the event or click on **Activate Historical Debugging** link.
-9. Visual Studio is now debugging the exception that caused the `View` to fail to render!  
+7. Double-click on the event or click on **Activate Historical Debugging** link.
+8. Visual Studio is now debugging the exception that caused the `View` to fail to render!  
 
 ## Example - Async Exceptions
-The snapshot feature is really powerful when debugging code that is using `await` or other async patterns. One of the challenges with `async` code is that an exception that has occurred previously might be responsible for an exception that you are currently debugging. Since the code is `async`, the app being debugged has moved on and none of the state from that previous point in time exists, so you can't inspect. This is where snapshots on exceptions really comes into it's own.
+The snapshot feature is really powerful when debugging code that is using `await` or other async patterns. One of the challenges with `async` code is that an exception that has occurred previously might be responsible for an exception that you are currently debugging. Since the code is `async`, the app being debugged has moved on and none of the state from that previous point in time exists, so you can't inspect the problem. This is where Snapshots on Exceptions really comes into its own.
 
 1. Follow the steps in the example above.
 2. Looking at the exception, it doesn't really tell us anything useful. Clearly `recipe` is `null` but the question is, why? Something earlier returned `null` and but because it was an `async` `Task`, it can't be inspected from this location.
@@ -47,7 +46,7 @@ The snapshot feature is really powerful when debugging code that is using `await
 
     ![Setting startup project](SnapshotOnException-SetStartupProject.png)
 
-2. Start debugging **(F5)**.
+2. Launch the application.
 3. Visual Studio will stop on the exception on **line 31**.
     
     ![Stopped in ](SnapshotOnException-ConsoleFinalException.png)

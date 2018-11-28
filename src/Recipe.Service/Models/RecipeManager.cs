@@ -49,7 +49,7 @@ namespace Recipe.Service.Models
 
         public List<Recipe> GetRecipesByName(string name) {
             Recipe[] recipesArray = Recipes.Values.ToArray();
-            List<Recipe> recipes = null; //new List<Recipe>()
+            List<Recipe> recipes = null;
 
             for (int i = 0; i < recipesArray.Length; i++) {
 
