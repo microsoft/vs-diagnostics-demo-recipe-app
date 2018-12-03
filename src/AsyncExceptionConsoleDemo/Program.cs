@@ -11,6 +11,7 @@ namespace AsyncExceptionConsoleDemo
     {
         static void Main(string[] args)
         {
+            // TIP: 11 - Async exceptions
             NullReferenceTest();
 
             while (true)

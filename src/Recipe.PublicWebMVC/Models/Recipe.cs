@@ -8,6 +8,7 @@ using Newtonsoft.Json.Converters;
 
 namespace PublicWebMVC.Models
 {
+    // TIP: 09 - DebuggerDisplay
     [DebuggerDisplay("{Title,nq}, id: {Id}")] 
     public partial class Recipe
     {

@@ -7,9 +7,17 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Cors;
+using PublicWebMVC.Models;
 
 namespace PublicWebMVC
 {
+    public static class Telemetry
+    {
+        public static void LogOnline(string role)
+        {
+
+        }
+    }
     public class Startup
     {
         public Startup(IConfiguration configuration)
@@ -46,7 +54,16 @@ namespace PublicWebMVC
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
+
+                routes.MapRoute(
+                    name: "recipe",
+                    template: "{controller=Recipe}/{action=View}/{id?}");
             });
+
+            var roleName = System.Environment.GetEnvironmentVariable("ROLE_NAME");
+            Telemetry.LogOnline(roleName);       
+
+            Config.Singleton = new Config(env);
         }
     }
 }

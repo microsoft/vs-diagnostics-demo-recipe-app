@@ -1,25 +1,51 @@
-﻿<main role="main">
-	<div class="inline" style="padding: 5%;">
-		<form asp-controller="Home" asp-action="SearchResults" class="form-inline">
-			<input class="form-control mr-sm-2" type="search" name="searchString" placeholder="Search Recipes" aria-label="Search" style="width: 90%">
-			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-		</form>
-	</div>
+﻿@model IndexViewModel
+
+@{
+    ViewData["Title"] = "Recipes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<main role="main">
+    <div class="inline" style="padding: 5%;">
+        <form asp-controller="Home" asp-action="Index" class="form-inline" method="get">
+            <input class="form-control mr-sm-2" type="search" name="searchString" placeholder="Search Recipes" aria-label="Search" style="width: 90%">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
     <div class="album py-5 bg-light">
         <div class="container">
             <div class="row" id="cardContainer">
-
+                @if(@Model.Recipes != null && @Model.Recipes.Count > 0 )
+                {
+                @foreach (var recipe in Model.Recipes)
+                {
+                    <a href="/recipe/view/@recipe.Id">
+                        <div class='col-md-3 recipe-card'>
+                            <div class='card mb-3 box-shadow'>
+                                <img class='card-img-top' src='@recipe.Image' alt='Image of @recipe.Title'>
+                                <div class='card-body'>
+                                    <p class='card-text'>@recipe.Title</p>
+                                    <div class='d-flex justify-content-between align-items-center'>
+                                        <small class='text-muted'>from @recipe.SourceName</small>
+                                        <small class='text-muted'><strong>@recipe.ReadyInMinutes mins</strong></small>
+                                    </div>
+                                    <div class='d-flex justify-content-between align-items-center'>
+                                        <small class='text-muted'>Rating: @recipe.SpoonacularScore%</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                }
+                }
+                else
+                {
+                    <p>No recipes found....</p>
+                    <div class="guy-img">
+                        <img alt="Confused Guy" src="~/images/guy.webp" />
+                    </div>
+                }
             </div>
         </div>
     </div>
 </main>
-
-@section Scripts
-    {
-    <environment include="Development">
-        <script src="~/js/index.js" asp-append-version="true"></script>
-    </environment>
-    <environment exclude="Development">        
-        <script src="~/js/index.min.js" asp-append-version="true"></script>
-    </environment>
-}

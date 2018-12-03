@@ -50,6 +50,9 @@
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.VisualStudio.Diagnostics.ProcessRecording, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8d3bb6c79cff225a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.VisualStudio.Diagnostics.ProcessRecording.1.2.0-alpha2018101802\lib\Api\netstandard2.0\Microsoft.VisualStudio.Diagnostics.ProcessRecording.dll</HintPath>
+    </Reference>
     <Reference Include="RestSharp, Version=106.2.1.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
       <HintPath>..\packages\RestSharp.106.2.1\lib\net452\RestSharp.dll</HintPath>
     </Reference>
@@ -174,6 +177,12 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="TTDAgent\lib\Api\net461\Microsoft.VisualStudio.Diagnostics.ProcessRecording.dll" />
+    <Content Include="TTDAgent\lib\Api\netstandard2.0\Microsoft.VisualStudio.Diagnostics.ProcessRecording.dll" />
+    <Content Include="TTDAgent\lib\x64\ProcessRecordAgent.dll" />
+    <Content Include="TTDAgent\lib\x64\ProcessRecordRuntime.dll" />
+    <Content Include="TTDAgent\lib\x86\ProcessRecordAgent.dll" />
+    <Content Include="TTDAgent\lib\x86\ProcessRecordRuntime.dll" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -182,11 +191,71 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="App_Data\Recipes\" />
-  </ItemGroup>
-  <ItemGroup>
+    <Content Include="App_Data\Recipes\631748.json" />
+    <Content Include="App_Data\Recipes\632115.json" />
+    <Content Include="App_Data\Recipes\632116.json" />
+    <Content Include="App_Data\Recipes\632169.json" />
+    <Content Include="App_Data\Recipes\633160.json" />
+    <Content Include="App_Data\Recipes\633721.json" />
+    <Content Include="App_Data\Recipes\634496.json" />
+    <Content Include="App_Data\Recipes\634585.json" />
+    <Content Include="App_Data\Recipes\634972.json" />
+    <Content Include="App_Data\Recipes\635285.json" />
+    <Content Include="App_Data\Recipes\635342.json" />
+    <Content Include="App_Data\Recipes\636422.json" />
+    <Content Include="App_Data\Recipes\637008.json" />
+    <Content Include="App_Data\Recipes\637440.json" />
+    <Content Include="App_Data\Recipes\637767.json" />
+    <Content Include="App_Data\Recipes\638385.json" />
+    <Content Include="App_Data\Recipes\638488.json" />
+    <Content Include="App_Data\Recipes\638626.json" />
+    <Content Include="App_Data\Recipes\638693.json" />
+    <Content Include="App_Data\Recipes\639153.json" />
+    <Content Include="App_Data\Recipes\639512.json" />
+    <Content Include="App_Data\Recipes\639616.json" />
+    <Content Include="App_Data\Recipes\640275.json" />
+    <Content Include="App_Data\Recipes\640366.json" />
+    <Content Include="App_Data\Recipes\640389.json" />
+    <Content Include="App_Data\Recipes\640509.json" />
+    <Content Include="App_Data\Recipes\640730.json" />
+    <Content Include="App_Data\Recipes\641759.json" />
+    <Content Include="App_Data\Recipes\642620.json" />
+    <Content Include="App_Data\Recipes\643471.json" />
+    <Content Include="App_Data\Recipes\645265.json" />
+    <Content Include="App_Data\Recipes\645753.json" />
+    <Content Include="App_Data\Recipes\646833.json" />
+    <Content Include="App_Data\Recipes\646868.json" />
+    <Content Include="App_Data\Recipes\647799.json" />
+    <Content Include="App_Data\Recipes\648176.json" />
+    <Content Include="App_Data\Recipes\650092.json" />
+    <Content Include="App_Data\Recipes\650751.json" />
+    <Content Include="App_Data\Recipes\650858.json" />
+    <Content Include="App_Data\Recipes\656506.json" />
+    <Content Include="App_Data\Recipes\657306.json" />
+    <Content Include="App_Data\Recipes\658517.json" />
+    <Content Include="App_Data\Recipes\661645.json" />
+    <Content Include="App_Data\Recipes\662054.json" />
+    <Content Include="App_Data\Recipes\662428.json" />
+    <Content Include="App_Data\Recipes\664655.json" />
+    <Content Include="App_Data\Recipes\665193.json" />
+    <Content Include="App_Data\Recipes\665257.json" />
+    <Content Include="App_Data\Recipes\715481.json" />
+    <Content Include="App_Data\Recipes\715702.json" />
+    <Content Include="App_Data\Recipes\715759.json" />
+    <Content Include="App_Data\Recipes\716245.json" />
+    <Content Include="App_Data\Recipes\716272.json" />
+    <Content Include="App_Data\Recipes\716293.json" />
+    <Content Include="App_Data\Recipes\716301.json" />
+    <Content Include="App_Data\Recipes\716423.json" />
+    <Content Include="App_Data\Recipes\716425.json" />
+    <Content Include="App_Data\Recipes\716435.json" />
+    <Content Include="App_Data\Recipes\724324.json" />
+    <Content Include="App_Data\Recipes\975070.json" />
+    <Content Include="App_Data\Recipes\991625.json" />
     <None Include="packages.config" />
+    <Content Include="TTDAgent\lib\Api\netstandard2.0\Microsoft.VisualStudio.Diagnostics.ProcessRecording.deps.json" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

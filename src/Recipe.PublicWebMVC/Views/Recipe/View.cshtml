@@ -1,22 +1,24 @@
-﻿@{
+﻿@model RecipeViewModel
+
+@{
     ViewData["Title"] = "Recipe";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="recipe">
     <div class="row">
         <div class="recipe-header">
-            <h1 class="recipe-header__title">@Model.Title</h1>
-            <div class="recipe-header__byline">By @Model.CreditText (@Model.License)</div>
-            <img class="recipe-header__image" src="@Model.Image" />
-            <div class="recipe-header__servings">Serves @Model.Servings</div>
-            <div class="recipe-header__time">Ready In @Model.ReadyInMinutes minutes</div>
+            <h1 class="recipe-header__title">@Model.Recipe.Title</h1>
+            <div class="recipe-header__byline">By @Model.Recipe.CreditText (@Model.Recipe.License)</div>
+            <img class="recipe-header__image" src="@Model.Recipe.Image" />
+            <div class="recipe-header__servings">Serves @Model.Recipe.Servings</div>
+            <div class="recipe-header__time">Ready In @Model.Recipe.ReadyInMinutes minutes</div>
         </div>
     </div>
     <div class="row">
         <div class="recipe-ingredients col-md-6">
             <h2>Ingredients</h2>
             <ul class="recipe-ingredients__list">
-                @foreach (var item in Model.ExtendedIngredients)
+                @foreach (var item in Model.Recipe.ExtendedIngredients)
                 {
                     <li class="recipe-ingredients__list-item">@item.OriginalString</li>
                 }
@@ -25,7 +27,7 @@
         <div class="recipe-steps col-md-6">
             <h2>Steps</h2>
             <ol class="recipe-steps__list">
-                @foreach (var item in Model.AnalyzedInstructions[0].Steps)
+                @foreach (var item in Model.Recipe.AnalyzedInstructions[0].Steps)
                 {
                     <li class="recipe-steps__list-item">@item.Step</li>
                 }
